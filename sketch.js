@@ -1,22 +1,28 @@
 const ascii_characters = ".,~-:;!*$@8%0O  ";
 
+
 let video;
 let asciiDiv;
 
 function setup() {
   noCanvas();
-  frameRate(24)
+  frameRate(24);
   video = createCapture(VIDEO);
-  video.size(48, 48);
+  console,log(video.width);
+  video.size(video.width/2, video.height/2);
+
   createCanvas(400, 400);
   asciiDiv = createDiv();
+  video.hide();
 }
 
 function draw() {
   video.loadPixels();
   let asciiVideo = "";
-  for (let i = 0; i < video.height; i++) {
-    for (let j = 0; j < video.width; j++) {
+
+  for (let j = 0; j < video.height; j++) {
+    for (let i = 0; i < video.width; i++) {
+
       let pixelIndex = (i + j * video.width) * 4;
       let r = video.pixels[pixelIndex + 0];
       let g = video.pixels[pixelIndex + 1];
@@ -25,8 +31,11 @@ function draw() {
       let len = ascii_characters.length;
       let charIndex = floor(map(avg, 0, 255, 0, len));
 
-      let character = ascii_characters.charAt(charIndex);
-      console.log(character);
+      let textColor = color(r, g, b);
+      let hexColor = "#" + textColor.toString("#rrggbb").substring(1);
+
+      let character = `<span style="color:${hexColor};">${ascii_characters.charAt(charIndex)}</span>`;
+
       if (character == ' ') {
         asciiVideo += "&nbsp;";
       } else {
@@ -35,5 +44,6 @@ function draw() {
     }
     asciiVideo += '<br/>';
   }
+  asciiDiv.center();
   asciiDiv.html(asciiVideo);
 }
