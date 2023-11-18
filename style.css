@@ -1,6 +1,10 @@
 html, body {
   margin: 0;
   padding: 0;
+  color:aliceblue;
+  background-color:black;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 24pt;
 }
 
 canvas {
