@@ -6,18 +6,18 @@ let asciiDiv;
 function setup() {
   noCanvas();
   frameRate(24)
-  video = createCapture(VIDEO);
+  video = createVideo(VIDEO);
   video.size(48, 48);
-  createCanvas(400, 400);
   asciiDiv = createDiv();
+  
 }
 
 function draw() {
   video.loadPixels();
   let asciiVideo = "";
-  for (let i = 0; i < video.height; i++) {
-    for (let j = 0; j < video.width; j++) {
-      let pixelIndex = (i + j * video.width) * 4;
+  for (let y = 0; y < video.height; y++) {
+    for (let x = 0; x < video.width; x++) {
+      let pixelIndex = (x + (y * video.width) ) * 4;
       let r = video.pixels[pixelIndex + 0];
       let g = video.pixels[pixelIndex + 1];
       let b = video.pixels[pixelIndex + 2];
