@@ -1,4 +1,5 @@
-const ascii_characters = ".,~-:;!*$@8%0O  ";
+// const ascii_characters = ".,~-:;!*$@8%0O  ";
+const ascii_characters = "#@%OHLTI)i=+;:,."
 
 let video;
 let asciiDiv;
