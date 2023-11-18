@@ -1,10 +1,11 @@
-const ascii_characters = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,\"^`'.                            ";
+const ascii_characters = ".,~-:;!*$@8%0O  ";
 
 let video;
 let asciiDiv;
 
 function setup() {
   noCanvas();
+  frameRate(24)
   video = createCapture(VIDEO);
   video.size(48, 48);
   createCanvas(400, 400);
