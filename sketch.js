@@ -21,64 +21,42 @@ let d1
 let r2
 let d2
 
-let point = 0;
-let circleX;
-let circleY;
+let circleX = -50;
+let circleY = 195;
 
 function setup() {
-  createCanvas(400, 400);
-  circleX = width/2;
-  circleY = height/2;
+  createCanvas(600, 400);
+  // circleX = width/2;
+  // circleY = height/2;
 }
 
 function draw() {
-  background(bgColor);
+  background(220);
   noStroke();
 
   fill(0);
   textSize(20);
-  text("Points: " + point, 0, 350);
+  text("Flying Dot", 0, 50);
 
   //add your conditional statement(s) between this comment and the brace below.
   fill(250,0,0);
   ellipse(circleX, circleY, 20, 20);
 
-  animateShapes();
+  drawShapes();
 
-  // if (mouseIsPressed === true) {
+  if((circleX >= 130 && circleX <= 170 && circleY <= 170 ) || (circleX >= 130 && circleX <= 170 && circleY >= 220 )||
+  (circleX >= 260 && circleX <= 300 && circleY <= 230 ) || (circleX >= 260 && circleX <= 300 && circleY >= 280 )||
+  (circleX >= 390 && circleX <= 430 && circleY <= 140 ) || (circleX >= 390 && circleX <= 430 && circleY >= 190 )||
+  (circleX >= 520 && circleX <= 560 && circleY <= 55 ) || (circleX >= 520 && circleX <= 560 && circleY >= 105 )){
+    circleX = 600;
+  } 
     
-  //   //if click 
-  //   if (mouseX >= yellowRectX && mouseX <= yellowRectX + 50 && mouseY >= yellowRectY && mouseY <= yellowRectY + 50) {
-  //     bgColor = "orange"
-  //   } else if (mouseX >= blueRectX && mouseX <= blueRectX + 50 && mouseY >= blueRectY && mouseY <= blueRectY + 50) {
-  //     bgColor = 'black'
-  //   }
+}   
 
-  //   if (d1 < r1) {
-  //     bgColor = "darkRed";
-  //   } else if (d2 < r2) {
-  //     bgColor = "limeGreen";
-  //   }
-  // } else {
-  //   bgColor = "gray";
-  // }
-}
 
 function keyPressed() {  //how to move circle 
-  if(key == 'a' || key == 'A') {
-    if (circleX < 0) {
-    } else {
-      circleX += -10;
-    }
-  }
-  else if(key == 'd' || key == 'D') {
-    if (circleX > 380) {
-    } else {
-      circleX += 10;
-    }
-  }
-  else if(key == 's' || key == 'S') {
-    if (circleY > 380) {
+  if(key == 's' || key == 'S') {
+    if (circleY > 580) {
     } else {
       circleY += 10;
     }
@@ -91,41 +69,49 @@ function keyPressed() {  //how to move circle
   }
 }
 
-function animateShapes() {
+function drawShapes() {
 
   //yellow-brown rectangle
-  fill(100, 100, 0, 100);
-  rect(yellowRectX, yellowRectY, 50, 50);
+  fill(100, 100, 0, 200);
+  rect(130, 0, 40, 170);
 
-  //light blue rectangle
+  fill(100, 100, 0, 200);
+  rect(130, 220, 40, 180);
+
+  //light blue rectangle 
   fill(0, 200, 200, 150);
-  rect(blueRectX, blueRectY, 50, 50);
+  rect(260, 0, 40, 230);
 
-  //pink ellipse
-  fill(255, 0, 255, 100);
-  ellipse(pinkCirX, pinkCirY, pinkCirDiam);
+  fill(0, 200, 200, 150);
+  rect(260, 280, 40, 120);
 
-  //purple ellipse
-  fill(41, 25, 173, 100);
-  ellipse(purpCirX, purpCirY, purpCirDiam);
+  //yellow-brown rectangle
+  fill(100, 100, 0, 200);
+  rect(390, 0, 40, 140);
 
-  //animates the shapes in a straight line
-  yellowRectY++;
-  blueRectY++;
-  pinkCirX++;
-  purpCirX--;
+  fill(100, 100, 0, 200);
+  rect(390, 190, 40, 210);
 
-  //moves the shapes back when they move off the canvas
-  if (yellowRectY > 450) {
-    yellowRectY = -50;
+  //light blue rectangle 
+  fill(0, 200, 200, 150);
+  rect(520, 0, 40, 55);
+
+  fill(0, 200, 200, 150);
+  rect(520, 105, 40, 295);
+  
+  
+
+
+  if (circleX < 590) {
+    circleX++;
+  } else if (circleX = 600) {
+    fill(0);
+    textSize(40);
+    text("Failed, try again", 180, 200);
   }
-  if (blueRectY > 450) {
-    blueRectY = -50;
-  }
-  if (pinkCirX > 425) {
-    pinkCirX = -25;
-  }
-  if (purpCirX < -100) {
-    purpCirX = 550;
+  else {
+    fill(0);
+    textSize(40);
+    text("You did it!", 200, 200);
   }
 }
