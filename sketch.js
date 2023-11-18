@@ -1,7 +1,18 @@
+let dawg;
+
+function preload() {
+  dawg = loadImage("dawg.png");
+}
+
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
-  background(220);
-}
+  background(100);
+  image(dawg,0,0, width, height);
+} 
