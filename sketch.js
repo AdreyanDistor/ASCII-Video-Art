@@ -5,8 +5,8 @@ let asciiDiv
 
 function setup() {
   noCanvas();
-  frameRate(12);
-  video = createVideo("Rick Astley - Never Gonna Give You Up (Official Music Video).mp4");
+  frameRate(36);
+  video = createVideo("BadApple.mp4");
   video.size(video.width/2, video.height/2);
   asciiDiv = createDiv();
   video.hide();
@@ -28,7 +28,6 @@ function draw() {
       let avg = (r + g + b) / 3;
       let len = ascii_characters.length;
       let charIndex = floor(map(avg, 0, 255, 0, len-1));
-      // document.write(ascii_characters[charIndex]);
       if (ascii_characters[charIndex] == ' ') {
         asciiVideo += "&nbsp;";
       } else {
@@ -37,6 +36,5 @@ function draw() {
     }
     asciiVideo += '<br/>';
   }
-  // asciiDiv.center();
   asciiDiv.html(asciiVideo);
 }
