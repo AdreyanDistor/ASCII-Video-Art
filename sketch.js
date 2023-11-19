@@ -1,4 +1,4 @@
-export function sketch(){
+
 const ascii_characters = ".,~-:;!*$@8%0O  ";
 
 let video;
@@ -43,6 +43,5 @@ function draw() {
     }
     asciiVideo += '<br/>';
   }
-  asciiDiv.center();
   asciiDiv.html(asciiVideo);
-}}
+}
