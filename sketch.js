@@ -1,4 +1,4 @@
-const ascii_characters = "abcdefg ";
+const ascii_characters = ".,~-:;!*$@8%0O  ";
 
 let video;
 let asciiDiv
@@ -6,8 +6,8 @@ let asciiDiv
 function setup() {
   noCanvas();
   frameRate(12);
-  video = createVideo("dinoVid480.mp4");
-  video.size(video.width*2, video.height*2);
+  video = createVideo("Rick Astley - Never Gonna Give You Up (Official Music Video).mp4");
+  video.size(video.width/2, video.height/2);
   asciiDiv = createDiv();
   video.hide();
   video.play();
@@ -37,6 +37,6 @@ function draw() {
     }
     asciiVideo += '<br/>';
   }
-  asciiDiv.center();
+  // asciiDiv.center();
   asciiDiv.html(asciiVideo);
 }
