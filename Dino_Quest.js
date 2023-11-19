@@ -1,18 +1,19 @@
-export function sketch(){
-const ascii_characters = ".,~-:;!*$@8%0O  ";
+export function dino(){
+
+const ascii_characters = "abcdefg ";
 
 let video;
-let asciiDiv;
+let asciiDiv
 
 function setup() {
   noCanvas();
-  frameRate(24);
-  video = createCapture(VIDEO);
-  video.size(video.width/3, video.height/3);
-
-  createCanvas(400, 400);
+  frameRate(12);
+  video = createVideo("dinoVid480.mp4");
+  video.size(video.width*2, video.height*2);
   asciiDiv = createDiv();
   video.hide();
+  video.play();
+  video.loop();
 }
 
 function draw() {
@@ -28,21 +29,17 @@ function draw() {
       let b = video.pixels[pixelIndex + 2];
       let avg = (r + g + b) / 3;
       let len = ascii_characters.length;
-      let charIndex = floor(map(avg, 0, 255, 0, len));
-
-      let textColor = color(r, g, b);
-      let hexColor = "#" + textColor.toString("#rrggbb").substring(1);
-
-      let character = `<span style="color:${hexColor};">${ascii_characters.charAt(charIndex)}</span>`;
-
-      if (character == ' ') {
+      let charIndex = floor(map(avg, 0, 255, 0, len-1));
+      // document.write(ascii_characters[charIndex]);
+      if (ascii_characters[charIndex] == ' ') {
         asciiVideo += "&nbsp;";
       } else {
-        asciiVideo += character;
+        asciiVideo += ascii_characters[charIndex];
       }
     }
     asciiVideo += '<br/>';
   }
   asciiDiv.center();
   asciiDiv.html(asciiVideo);
-}}
+}
+}
